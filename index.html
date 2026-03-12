@@ -144,7 +144,7 @@ import{getDatabase,ref,onValue,push,remove,update}from"https://www.gstatic.com/f
 // Project Settings → Web App → firebaseConfig
 // ════════════════════════════════════════
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+//import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -160,13 +160,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+//const app = initializeApp(firebaseConfig);
 
 if(firebaseConfig.apiKey==="YOUR_API_KEY"){
   window._fbReady=false;
   initLocal();
 }else{
-  const app=initializeApp(FC);
+  const app=initializeApp(firebaseConfig);
   const db=getDatabase(app);
   window._fbReady=true;
   onValue(ref(db,'pesticides'),s=>{window._pest=s.val()?Object.entries(s.val()).map(([k,v])=>({...v,_key:k})):[];render()});
