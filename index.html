@@ -143,15 +143,24 @@ import{getDatabase,ref,onValue,push,remove,update}from"https://www.gstatic.com/f
 // Get it from: console.firebase.google.com
 // Project Settings → Web App → firebaseConfig
 // ════════════════════════════════════════
-const FC={
-  apiKey:"YOUR_API_KEY",
-  authDomain:"YOUR_PROJECT.firebaseapp.com",
-  databaseURL:"YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId:"YOUR_PROJECT_ID",
-  storageBucket:"YOUR_PROJECT.appspot.com",
-  messagingSenderId:"YOUR_SENDER_ID",
-  appId:"YOUR_APP_ID"
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCJuiZHCLhxofNrEz65U94-Wd2dRcDN3Xc",
+  authDomain: "sksk-kendra.firebaseapp.com",
+  databaseURL: "https://sksk-kendra-default-rtdb.firebaseio.com",
+  projectId: "sksk-kendra",
+  storageBucket: "sksk-kendra.firebasestorage.app",
+  messagingSenderId: "788904731030",
+  appId: "1:788904731030:web:37a0cd069bcf587721fdb7"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 if(FC.apiKey==="YOUR_API_KEY"){
   window._fbReady=false;
