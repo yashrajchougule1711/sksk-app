@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="theme-color" content="#16a34a"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="SKS Kendra"/>
+<title>Shri Krushi Seva Kendra</title>
+<link rel="manifest" href="manifest.json"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--g:#16a34a;--gd:#14532d;--gl:#f0fdf4;--gm:#dcfce7;--border:#e5e7eb;--text:#111827;--muted:#6b7280;--soft:#9ca3af;--bg:#f9fafb;--red:#dc2626}
+body{font-family:'Trebuchet MS','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.banner{background:linear-gradient(135deg,#14532d,#15803d);padding:10px 16px;text-align:center;position:relative}
+.banner-title{font-size:17px;font-weight:800;color:#fff}
+.banner-sub{font-size:9px;color:#86efac;letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.lang-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;color:#fff;font-size:12px;font-weight:700;padding:5px 12px;cursor:pointer;font-family:inherit}
+.nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-around;max-width:1100px;margin:0 auto;height:54px;padding:0 4px}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 2px;border:none;background:none;cursor:pointer;border-radius:10px;color:var(--soft);font-family:inherit;transition:all .15s}
+.nav-btn.active{color:var(--g);background:var(--gl)}
+.nav-btn .icon{font-size:18px;line-height:1}
+.nav-btn .lbl{font-size:10px;font-weight:600}
+.main{max-width:1100px;margin:0 auto;padding:16px 14px 90px}
+@media(min-width:768px){.main{padding:24px 32px 40px}}
+.ph{margin-bottom:16px}
+.ph h1{font-size:19px;font-weight:700;letter-spacing:-.3px}
+.ph p{font-size:12px;color:var(--soft);margin-top:3px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px}
+@media(min-width:768px){.stats{grid-template-columns:repeat(5,1fr)}}
+.stat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:13px 15px;border-top:3px solid var(--g)}
+.stat-icon{font-size:19px;margin-bottom:5px}
+.stat-val{font-size:24px;font-weight:800;letter-spacing:-1px}
+.stat-lbl{font-size:11px;color:var(--soft);margin-top:2px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:13px}
+.card-title{font-size:13px;font-weight:600;color:#374151;margin-bottom:13px}
+.two-col{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:768px){.two-col{grid-template-columns:1fr 1fr}}
+.pgrid{display:grid;grid-template-columns:1fr;gap:11px}
+@media(min-width:600px){.pgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+.pcard{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.twrap{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:460px}
+thead tr{background:var(--gl);border-bottom:1px solid var(--border)}
+th{padding:10px 13px;text-align:left;font-size:11px;color:#15803d;font-weight:700;letter-spacing:.7px;text-transform:uppercase;white-space:nowrap}
+td{padding:11px 13px;font-size:13px;border-bottom:1px solid #f3f4f6}
+.si{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.sd{min-width:42px;text-align:center;border-radius:10px;padding:7px 0}
+.sd-day{font-size:18px;font-weight:800;line-height:1}
+.sd-mon{font-size:9px;letter-spacing:.5px;text-transform:uppercase;margin-top:1px}
+.bill-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f3f4f6}
+.bill-row:last-child{border-bottom:none}
+.row-btw{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.prog{background:#f3f4f6;border-radius:4px;height:5px}
+.prog-f{height:100%;border-radius:4px;transition:width .4s}
+.store-card{background:linear-gradient(135deg,var(--gl),var(--gm));border:1px solid #bbf7d0;border-radius:14px;padding:15px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;flex-wrap:wrap}
+.sale-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:13px 15px;margin-bottom:9px}
+.btn{background:var(--g);color:#fff;border:none;border-radius:10px;padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn:hover{background:#15803d}
+.btn-sm{padding:7px 12px;font-size:12px;border-radius:8px}
+.btn-red{font-size:11px;color:var(--red);background:#fef2f2;border:1px solid #fecaca;border-radius:7px;padding:5px 10px;cursor:pointer;font-family:inherit;font-weight:600}
+.btn-done{font-size:11px;background:var(--gl);color:var(--g);border:1px solid #bbf7d0;border-radius:7px;padding:5px 10px;cursor:pointer;font-family:inherit;font-weight:700}
+.btn-x{color:var(--muted);background:none;border:none;cursor:pointer;font-size:16px;padding:3px}
+.btn-wa{background:#25D366;color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-print{background:#1d4ed8;color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* ── TAP PICKER: 4 buttons in 2×2 grid ── */
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.opt-btn{padding:13px 8px;border:2px solid var(--border);border-radius:12px;background:#f9fafb;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;text-align:center;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:5px;line-height:1.3}
+.opt-btn .oi{font-size:22px}
+.opt-btn:hover{border-color:#bbf7d0;background:var(--gl);color:var(--g)}
+.opt-btn.sel{border-color:var(--g);background:var(--gl);color:var(--g);box-shadow:0 2px 8px rgba(22,163,74,.18)}
+
+.fg{margin-bottom:11px}
+.fl{font-size:12px;font-weight:600;color:#374151;margin-bottom:6px;display:block}
+.fi{width:100%;background:#f9fafb;border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;outline:none;font-family:inherit;transition:border .15s}
+.fi:focus{border-color:var(--g);background:#fff}
+select.fi{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);display:flex;align-items:flex-end;justify-content:center;z-index:200;animation:fi .15s ease}
+@media(min-width:600px){.overlay{align-items:center}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:20px 20px 0 0;padding:20px 17px 28px;width:100%;max-width:500px;animation:su .2s ease;max-height:92vh;overflow-y:auto}
+@media(min-width:600px){.modal{border-radius:20px}}
+@keyframes su{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:15px}
+.handle{width:36px;height:4px;background:#e5e7eb;border-radius:4px;margin:0 auto 15px}
+.notif{position:fixed;top:0;left:0;right:0;background:var(--gd);color:#fff;padding:13px 17px;z-index:999;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;transform:translateY(-110%);transition:transform .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.notif.show{transform:translateY(0)}
+.loading{text-align:center;padding:40px 20px;color:var(--soft)}
+.spinner{width:34px;height:34px;border:3px solid #e5e7eb;border-top-color:var(--g);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 11px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fb-banner{border-radius:10px;padding:9px 13px;font-size:12px;font-weight:600;margin-bottom:14px}
+@media print{body *{visibility:hidden}#printArea,#printArea *{visibility:visible}#printArea{position:fixed;top:0;left:0;width:100%;padding:20px;background:#fff}}
+</style>
+</head>
+<body>
+
+<div class="notif" id="notifBar">
+  <span>🔔</span><span id="notifText"></span>
+  <button onclick="closeNotif()" style="margin-left:auto;background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✕</button>
+</div>
+
+<div class="banner">
+  <div style="font-size:20px;margin-bottom:3px">🌿🌾🌿</div>
+  <div class="banner-title">Shri Krushi Seva Kendra</div>
+  <div class="banner-sub" id="bannerSub">Agricultural Pesticide Store</div>
+  <button class="lang-btn" onclick="toggleLang()" id="langBtn">मराठी</button>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" id="nav-Dashboard" onclick="go('Dashboard')"><span class="icon">🏠</span><span class="lbl" id="nl-home">Home</span></button>
+    <button class="nav-btn" id="nav-Pesticides" onclick="go('Pesticides')"><span class="icon">🧪</span><span class="lbl" id="nl-stock">Stock</span></button>
+    <button class="nav-btn" id="nav-Billing" onclick="go('Billing')"><span class="icon">🧾</span><span class="lbl" id="nl-bill">Billing</span></button>
+    <button class="nav-btn" id="nav-Crops" onclick="go('Crops')"><span class="icon">🌾</span><span class="lbl" id="nl-crops">Crops</span></button>
+    <button class="nav-btn" id="nav-Schedule" onclick="go('Schedule')"><span class="icon">📅</span><span class="lbl" id="nl-sched">Schedule</span></button>
+  </div>
+</nav>
+
+<div class="main" id="app"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+<div id="printArea" style="display:none"></div>
+
+<div class="overlay" id="overlay" style="display:none" onclick="outsideClose(event)">
+  <div class="modal" id="mbox">
+    <div class="handle"></div>
+    <h3 id="mtitle"></h3>
+    <div id="mbody"></div>
+    <div style="display:flex;gap:10px;margin-top:15px" id="mfooter"></div>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import{getDatabase,ref,onValue,push,remove,update}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+// ════════════════════════════════════════
+// 🔥 PASTE YOUR FIREBASE CONFIG HERE
+// Get it from: console.firebase.google.com
+// Project Settings → Web App → firebaseConfig
+// ════════════════════════════════════════
+const FC={
+  apiKey:"YOUR_API_KEY",
+  authDomain:"YOUR_PROJECT.firebaseapp.com",
+  databaseURL:"YOUR_PROJECT-default-rtdb.firebaseio.com",
+  projectId:"YOUR_PROJECT_ID",
+  storageBucket:"YOUR_PROJECT.appspot.com",
+  messagingSenderId:"YOUR_SENDER_ID",
+  appId:"YOUR_APP_ID"
+};
+
+if(FC.apiKey==="YOUR_API_KEY"){
+  window._fbReady=false;
+  initLocal();
+}else{
+  const app=initializeApp(FC);
+  const db=getDatabase(app);
+  window._fbReady=true;
+  onValue(ref(db,'pesticides'),s=>{window._pest=s.val()?Object.entries(s.val()).map(([k,v])=>({...v,_key:k})):[];render()});
+  onValue(ref(db,'crops'),    s=>{window._crops=s.val()?Object.entries(s.val()).map(([k,v])=>({...v,_key:k})):[];render()});
+  onValue(ref(db,'schedule'), s=>{window._sched=s.val()?Object.entries(s.val()).map(([k,v])=>({...v,_key:k})):[];render()});
+  onValue(ref(db,'sales'),    s=>{window._sales=s.val()?Object.entries(s.val()).map(([k,v])=>({...v,_key:k})):[];render()});
+  window._db=db; window._ref=ref; window._push=push; window._remove=remove; window._update=update;
+  // seed sample data once
+  setTimeout(()=>{
+    if(window._pest&&window._pest.length===0){
+      [
+        {name:"Chlorpyrifos",type:"Insecticide",target:"Aphids, Beetles",stock:45,unit:"L",toxicity:"High",expiry:"2026-08-01",price:350},
+        {name:"Mancozeb",type:"Fungicide",target:"Blight, Rust",stock:80,unit:"kg",toxicity:"Low",expiry:"2027-01-15",price:220},
+        {name:"Glyphosate",type:"Herbicide",target:"Broadleaf Weeds",stock:120,unit:"L",toxicity:"Medium",expiry:"2026-12-31",price:180}
+      ].forEach(p=>push(ref(db,'pesticides'),p));
+    }
+  },3000);
+}
+
+function initLocal(){
+  const def_p=[{id:1,name:"Chlorpyrifos",type:"Insecticide",target:"Aphids, Beetles",stock:45,unit:"L",toxicity:"High",expiry:"2026-08-01",price:350},{id:2,name:"Mancozeb",type:"Fungicide",target:"Blight, Rust",stock:80,unit:"kg",toxicity:"Low",expiry:"2027-01-15",price:220},{id:3,name:"Glyphosate",type:"Herbicide",target:"Broadleaf Weeds",stock:120,unit:"L",toxicity:"Medium",expiry:"2026-12-31",price:180}];
+  const def_c=[{id:1,name:"Wheat",field:"Field A",area:12,status:"Growing",sowDate:"2025-11-01"},{id:2,name:"Rice",field:"Field B",area:8,status:"Harvested",sowDate:"2025-08-15"}];
+  const def_s=[{id:1,crop:"Wheat",pesticide:"Chlorpyrifos",date:"2026-03-15",status:"Upcoming",notes:"Evening spray"}];
+  window._pest  = JSON.parse(localStorage.getItem('sksk_p')||'null')||def_p;
+  window._crops = JSON.parse(localStorage.getItem('sksk_c')||'null')||def_c;
+  window._sched = JSON.parse(localStorage.getItem('sksk_s')||'null')||def_s;
+  window._sales = JSON.parse(localStorage.getItem('sksk_b')||'null')||[];
+  render();
+}
+window._initLocal=initLocal;
+</script>
+
+<script>
+// ════════════════════════════════════════
+// LANGUAGE
+// ════════════════════════════════════════
+let lang='en';
+const T={
+  en:{
+    home:'Home',stock:'Stock',bill:'Billing',crops:'Crops',sched:'Schedule',
+    dashboard:'🏪 Store Dashboard',addProduct:'+ Add Product',addCrop:'+ Add Crop',addSched:'+ Schedule',
+    stockInv:'🧪 Stock Inventory',cropMgmt:'🌾 Crop Management',spraySched:'📅 Spray Schedule',newBill:'🧾 New Bill',
+    products:'products',activeCrops:'Active Crops',sprays:'Sprays Due',lowStock:'Low Stock',todayRev:'Today Revenue',
+    upcoming:'Upcoming',done:'Done',upcomingSpray:'📅 Upcoming Sprays',stockLevels:'🧪 Stock Levels',
+    customer:'Customer Name',phone:'WhatsApp Number',addItem:'+ Add Item',confirmSave:'✓ Confirm & Save',
+    noItems:'No items added. Tap "+ Add Item" to start.',total:'Total',saleHistory:'📋 Sale History',
+    productName:'Product Name *',typeLabel:'🌿 Type — tap to select',targetPests:'Target Pests',
+    stockQty:'Stock Quantity',unitLabel:'📦 Unit — tap to select',priceLabel:'Price per Unit (₹)',
+    toxLabel:'⚠️ Toxicity — tap to select',expiry:'Expiry Date',cropName:'Crop Name *',
+    fieldName:'Field Name',area:'Area (acres)',sowDate:'Sow Date',statusLabel:'🌱 Status — tap to select',
+    cropField:'Crop *',pesticideField:'Pesticide *',dateField:'Date *',notesField:'Notes',
+    selectProduct:'— Choose product —',available:'Available',markDone:'✓ Done',remove:'Remove',sell:'🛒 Sell',
+    reprint:'🖨️ Reprint',resend:'💬 Resend',fbConnected:'🔥 Firebase Connected — Syncing across all devices!',
+    localMode:'⚠️ Local mode only. Connect Firebase for multi-device sync.',
+    bannerSub:'Agricultural Pesticide Store',thankyou:'Thank you for your business! 🙏',
+    billTitle:'Bill',noUpcoming:'No upcoming sprays.',
+    addPesticide:'🧪 Add New Pesticide',addCropTitle:'🌾 Add Crop',schedTitle:'📅 Schedule Spray',addItemTitle:'🛒 Add Item to Bill',
+    save:'✓ Save',cancel:'Cancel',
+    insecticide:'Insecticide',fungicide:'Fungicide',herbicide:'Herbicide',other:'Other',
+    high:'High',medium:'Medium',low:'Low',unknown:'Unknown',
+    growing:'Growing',planted:'Planted',harvested:'Harvested',failed:'Failed',
+  },
+  mr:{
+    home:'मुख्यपृष्ठ',stock:'साठा',bill:'बिलिंग',crops:'पिके',sched:'वेळापत्रक',
+    dashboard:'🏪 स्टोअर डॅशबोर्ड',addProduct:'+ उत्पादन जोडा',addCrop:'+ पीक जोडा',addSched:'+ वेळापत्रक',
+    stockInv:'🧪 साठा यादी',cropMgmt:'🌾 पीक व्यवस्थापन',spraySched:'📅 फवारणी वेळापत्रक',newBill:'🧾 नवीन बिल',
+    products:'उत्पादने',activeCrops:'सक्रिय पिके',sprays:'फवारण्या बाकी',lowStock:'कमी साठा',todayRev:'आजचे उत्पन्न',
+    upcoming:'येणारे',done:'पूर्ण',upcomingSpray:'📅 येणाऱ्या फवारण्या',stockLevels:'🧪 साठा पातळी',
+    customer:'ग्राहकाचे नाव',phone:'WhatsApp नंबर',addItem:'+ वस्तू जोडा',confirmSave:'✓ बिल जतन करा',
+    noItems:'कोणतीही वस्तू नाही. "+ वस्तू जोडा" दाबा.',total:'एकूण',saleHistory:'📋 विक्री इतिहास',
+    productName:'उत्पादनाचे नाव *',typeLabel:'🌿 प्रकार — निवडा',targetPests:'लक्ष्य कीटक',
+    stockQty:'साठा प्रमाण',unitLabel:'📦 एकक — निवडा',priceLabel:'प्रति एकक किंमत (₹)',
+    toxLabel:'⚠️ विषारीपणा — निवडा',expiry:'कालबाह्यता तारीख',cropName:'पिकाचे नाव *',
+    fieldName:'शेताचे नाव',area:'क्षेत्र (एकर)',sowDate:'पेरणी तारीख',statusLabel:'🌱 स्थिती — निवडा',
+    cropField:'पीक *',pesticideField:'कीटकनाशक *',dateField:'तारीख *',notesField:'नोट्स',
+    selectProduct:'— उत्पादन निवडा —',available:'उपलब्ध',markDone:'✓ पूर्ण',remove:'काढा',sell:'🛒 विका',
+    reprint:'🖨️ पुन्हा प्रिंट',resend:'💬 पुन्हा पाठवा',fbConnected:'🔥 Firebase जोडले — सर्व डिव्हाइसवर समक्रमण!',
+    localMode:'⚠️ फक्त स्थानिक मोड. Firebase जोडा.',
+    bannerSub:'कृषी कीटकनाशक दुकान',thankyou:'व्यवसायाबद्दल धन्यवाद! 🙏',
+    billTitle:'बिल',noUpcoming:'येणाऱ्या फवारण्या नाहीत.',
+    addPesticide:'🧪 नवीन कीटकनाशक जोडा',addCropTitle:'🌾 पीक जोडा',schedTitle:'📅 फवारणी शेड्यूल करा',addItemTitle:'🛒 बिलात वस्तू जोडा',
+    save:'✓ जतन करा',cancel:'रद्द करा',
+    insecticide:'कीटकनाशक',fungicide:'बुरशीनाशक',herbicide:'तणनाशक',other:'इतर',
+    high:'जास्त',medium:'मध्यम',low:'कमी',unknown:'अज्ञात',
+    growing:'वाढत आहे',planted:'लावलेले',harvested:'काढणी झाली',failed:'अपयशी',
+  }
+};
+function t(k){return (T[lang]||T.en)[k]||k}
+
+function toggleLang(){
+  lang = lang==='en'?'mr':'en';
+  document.getElementById('langBtn').textContent = lang==='en'?'मराठी':'English';
+  document.getElementById('bannerSub').textContent = t('bannerSub');
+  document.getElementById('nl-home').textContent  = t('home');
+  document.getElementById('nl-stock').textContent = t('stock');
+  document.getElementById('nl-bill').textContent  = t('bill');
+  document.getElementById('nl-crops').textContent = t('crops');
+  document.getElementById('nl-sched').textContent = t('sched');
+  render();
+}
+
+// ════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════
+function getPest()  {return window._pest ||[]}
+function getCrops() {return window._crops||[]}
+function getSched() {return window._sched||[]}
+function getSales() {return window._sales||[]}
+
+function svLocal(){
+  localStorage.setItem('sksk_p',JSON.stringify(getPest()));
+  localStorage.setItem('sksk_c',JSON.stringify(getCrops()));
+  localStorage.setItem('sksk_s',JSON.stringify(getSched()));
+  localStorage.setItem('sksk_b',JSON.stringify(getSales()));
+}
+
+async function dbAdd(col,data){
+  if(window._fbReady){await window._push(window._ref(window._db,col),data);}
+  else{
+    const id=Date.now();
+    if(col==='pesticides')window._pest.push({...data,id});
+    if(col==='crops')     window._crops.push({...data,id});
+    if(col==='schedule')  window._sched.push({...data,id});
+    if(col==='sales')     window._sales.push({...data,id});
+    svLocal();render();
+  }
+}
+async function dbRemove(col,item){
+  if(window._fbReady){await window._remove(window._ref(window._db,`${col}/${item._key}`));}
+  else{
+    if(col==='pesticides')window._pest  =getPest().filter(x=>x.id!==item.id);
+    if(col==='crops')     window._crops =getCrops().filter(x=>x.id!==item.id);
+    if(col==='schedule')  window._sched =getSched().filter(x=>x.id!==item.id);
+    svLocal();render();
+  }
+}
+async function dbUpdate(col,item,data){
+  if(window._fbReady){await window._update(window._ref(window._db,`${col}/${item._key}`),data);}
+  else{
+    if(col==='pesticides')window._pest=getPest().map(x=>(x.id===item.id?{...x,...data}:x));
+    if(col==='schedule')  window._sched=getSched().map(x=>(x.id===item.id?{...x,...data}:x));
+    svLocal();render();
+  }
+}
+
+// ════════════════════════════════════════
+// NAV
+// ════════════════════════════════════════
+let tab='Dashboard',mtype=null,fd={};
+let bill={customer:'',phone:'',items:[]};
+
+function go(t){
+  tab=t;
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('nav-'+t).classList.add('active');
+  render();
+}
+
+// ════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════
+const TC={High:{bg:'#fef2f2',c:'#dc2626',b:'#fecaca'},Medium:{bg:'#fffbeb',c:'#d97706',b:'#fde68a'},Low:{bg:'#f0fdf4',c:'#16a34a',b:'#bbf7d0'},Unknown:{bg:'#f5f5f5',c:'#6b7280',b:'#e0e0e0'}};
+const SC={Growing:{bg:'#f0fdf4',c:'#15803d',b:'#bbf7d0'},Harvested:{bg:'#fafaf9',c:'#78716c',b:'#e7e5e4'},Planted:{bg:'#eff6ff',c:'#2563eb',b:'#bfdbfe'},Failed:{bg:'#fef2f2',c:'#dc2626',b:'#fecaca'}};
+function bdg(l,m){const s=(m||{})[l]||{bg:'#f5f5f5',c:'#555',b:'#ddd'};return`<span class="badge" style="background:${s.bg};color:${s.c};border:1px solid ${s.b}">${l}</span>`}
+function fmtD(d){try{return new Date(d).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}catch{return d}}
+function rp(n){return '₹'+Number(n).toLocaleString('en-IN')}
+
+// ── TAP PICKER ──
+function optPicker(id,opts,sel,icons){
+  fd[id]=sel||opts[0];
+  return`<div class="opt-grid">${opts.map(o=>`<button type="button" class="opt-btn${(sel||opts[0])===o?' sel':''}" onclick="pickOpt('${id}','${o}',this)"><span class="oi">${icons[o]||'•'}</span>${o}</button>`).join('')}</div>`;
+}
+function pickOpt(id,val,el){
+  fd[id]=val;
+  el.closest('.opt-grid').querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+// ════════════════════════════════════════
+// RENDER
+// ════════════════════════════════════════
+function render(){
+  const el=document.getElementById('app');
+  if(!el)return;
+  if(tab==='Dashboard')  el.innerHTML=rDash();
+  if(tab==='Pesticides') el.innerHTML=rPest();
+  if(tab==='Billing')    el.innerHTML=rBill();
+  if(tab==='Crops')      el.innerHTML=rCrops();
+  if(tab==='Schedule')   el.innerHTML=rSched();
+}
+
+// ── DASHBOARD ──
+function rDash(){
+  const pest=getPest(),cr=getCrops(),sc=getSched(),sa=getSales();
+  const up=sc.filter(s=>s.status==='Upcoming').length;
+  const low=pest.filter(p=>p.stock<50).length;
+  const today=new Date().toISOString().split('T')[0];
+  const td=sa.filter(s=>s.date===today);
+  const rev=td.reduce((a,s)=>a+s.total,0);
+  const fbBanner=window._fbReady
+    ?`<div class="fb-banner" style="background:#eff6ff;border:1px solid #bfdbfe;color:#2563eb">${t('fbConnected')}</div>`
+    :`<div class="fb-banner" style="background:#fffbeb;border:1px solid #fde68a;color:#d97706">${t('localMode')}</div>`;
+  return`
+  ${fbBanner}
+  <div class="ph"><h1>${t('dashboard')}</h1><p>${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</p></div>
+  <div class="stats">
+    <div class="stat" style="border-top-color:#16a34a"><div class="stat-icon">🧪</div><div class="stat-val">${pest.length}</div><div class="stat-lbl">${t('products')}</div></div>
+    <div class="stat" style="border-top-color:#2563eb"><div class="stat-icon">🌾</div><div class="stat-val">${cr.filter(c=>c.status!=='Harvested').length}</div><div class="stat-lbl">${t('activeCrops')}</div></div>
+    <div class="stat" style="border-top-color:${up>0?'#d97706':'#16a34a'}"><div class="stat-icon">📅</div><div class="stat-val">${up}</div><div class="stat-lbl">${t('sprays')}</div></div>
+    <div class="stat" style="border-top-color:${low>0?'#dc2626':'#16a34a'}"><div class="stat-icon">⚠️</div><div class="stat-val">${low}</div><div class="stat-lbl">${t('lowStock')}</div></div>
+    <div class="stat" style="border-top-color:#7c3aed"><div class="stat-icon">💰</div><div class="stat-val" style="font-size:16px">${rp(rev)}</div><div class="stat-lbl">${t('todayRev')}</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">${t('upcomingSpray')}</div>
+      ${sc.filter(s=>s.status==='Upcoming').slice(0,4).map(s=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f3f4f6"><div><div style="font-size:13px;font-weight:600">${s.crop} — ${s.pesticide}</div><div style="font-size:11px;color:#9ca3af;margin-top:2px">${s.date}</div></div><span class="badge" style="background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0">${t('upcoming')}</span></div>`).join('')||`<div style="color:#d1d5db;font-size:13px">${t('noUpcoming')}</div>`}
+    </div>
+    <div class="card">
+      <div class="card-title">${t('stockLevels')}</div>
+      ${pest.map(p=>`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600">${p.name}</span><span style="color:${p.stock<50?'#dc2626':'#16a34a'};font-weight:700">${p.stock} ${p.unit}</span></div><div class="prog"><div class="prog-f" style="width:${Math.min(p.stock,150)/1.5}%;background:${p.stock<50?'#dc2626':'#16a34a'}"></div></div></div>`).join('')}
+    </div>
+  </div>
+  ${td.length?`<div class="card"><div class="card-title">🧾 ${lang==='mr'?'आजच्या विक्री':'Today Sales'} — ${rp(rev)}</div>${td.slice(-3).reverse().map(s=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:13px"><div><b>${s.customer||'Customer'}</b><br><span style="font-size:11px;color:#9ca3af">${s.items.map(i=>i.name).join(', ')}</span></div><div style="font-weight:700;color:#16a34a">${rp(s.total)}</div></div>`).join('')}</div>`:''}
+  <div class="store-card"><div style="display:flex;align-items:center;gap:12px"><span style="font-size:30px">🏪</span><div><div style="font-weight:800;color:#14532d;font-size:14px">Shri Krushi Seva Kendra</div><div style="font-size:12px;color:#16a34a;margin-top:2px">${lang==='mr'?'आपला विश्वासू कृषी साथीदार':'Your trusted agricultural partner'}</div></div></div><div style="font-size:12px;color:#15803d;text-align:right"><div>🌱 ${lang==='mr'?'दर्जेदार कीटकनाशके':'Quality Pesticides'}</div><div style="margin-top:4px">💊 ${lang==='mr'?'तज्ञ सल्ला':'Expert Advice'}</div></div></div>`;
+}
+
+// ── PESTICIDES ──
+function rPest(){
+  const pest=getPest();
+  return`
+  <div class="row-btw"><div class="ph" style="margin:0"><h1>${t('stockInv')}</h1><p>${pest.length} ${t('products')}</p></div><button class="btn btn-sm" onclick="openModal('pesticide')">${t('addProduct')}</button></div>
+  <div class="pgrid">${pest.map((p,i)=>`
+    <div class="pcard">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px"><div><div style="font-size:15px;font-weight:700">${p.name}</div><div style="font-size:10px;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px;margin-top:2px">${p.type}</div></div>${bdg(p.toxicity,TC)}</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+        <div style="font-size:12px;color:#6b7280">🎯 <span style="color:#374151">${p.target}</span></div>
+        <div style="font-size:12px;color:#6b7280">📦 <span style="color:${p.stock<50?'#dc2626':'#374151'};font-weight:700">${p.stock} ${p.unit}</span>${p.stock<50?` <span class="badge" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca;font-size:10px">${t('lowStock')}</span>`:''}</div>
+        <div style="font-size:12px;color:#6b7280">💰 <span style="font-weight:700;color:#374151">${rp(p.price||0)} / ${p.unit}</span></div>
+        <div style="font-size:12px;color:#6b7280">📅 ${t('expiry')}: <span style="color:#374151">${p.expiry}</span></div>
+      </div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <button class="btn-red" onclick="delPest(${i})">${t('remove')}</button>
+        <button class="btn btn-sm" style="background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0" onclick="sellDirect(${i})">${t('sell')}</button>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+// ── BILLING ──
+function rBill(){
+  const total=bill.items.reduce((a,i)=>a+i.qty*i.price,0);
+  const sales=getSales();
+  return`
+  <div class="row-btw"><div class="ph" style="margin:0"><h1>${t('newBill')}</h1><p>${lang==='mr'?'विक्री करा व साठा कमी करा':'Create sale & reduce inventory'}</p></div><button class="btn btn-sm" onclick="openModal('addItem')">${t('addItem')}</button></div>
+  <div class="card">
+    <div class="card-title">👤 ${lang==='mr'?'ग्राहक माहिती':'Customer Details'}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="fg"><label class="fl">${t('customer')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. रमेश पाटील':'e.g. Ramesh Patil'}" value="${bill.customer}" oninput="bill.customer=this.value"></div>
+      <div class="fg"><label class="fl">${t('phone')}</label><input class="fi" type="tel" placeholder="e.g. 9876543210" value="${bill.phone}" oninput="bill.phone=this.value"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🛒 ${lang==='mr'?'बिल वस्तू':'Bill Items'}</div>
+    ${bill.items.length===0?`<div style="color:#d1d5db;font-size:13px;text-align:center;padding:18px 0">${t('noItems')}</div>`:''}
+    ${bill.items.map((item,i)=>`<div class="bill-row"><div style="flex:1"><div style="font-size:14px;font-weight:700">${item.name}</div><div style="font-size:12px;color:#9ca3af">${rp(item.price)}/${item.unit} × ${item.qty} ${item.unit}</div></div><div style="font-weight:700;color:#16a34a;margin-right:10px">${rp(item.price*item.qty)}</div><button class="btn-x" onclick="rmItem(${i})">✕</button></div>`).join('')}
+    ${bill.items.length?`<div style="display:flex;justify-content:space-between;padding:11px 0 0;border-top:2px solid #f3f4f6;margin-top:7px"><span style="font-size:15px;font-weight:700">${t('total')}</span><span style="font-size:18px;font-weight:800;color:#16a34a">${rp(total)}</span></div>`:''}
+  </div>
+  ${bill.items.length?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+    <button class="btn" style="flex:1;min-width:130px" onclick="finalize()">${t('confirmSave')}</button>
+    <button class="btn-print" onclick="doPrint()">🖨️ ${lang==='mr'?'प्रिंट':'Print'}</button>
+    <button class="btn-wa" onclick="doWA()">💬 WhatsApp</button>
+  </div>`:''}
+  ${sales.length?`<div><div style="font-size:16px;font-weight:700;margin-bottom:11px">${t('saleHistory')}</div>
+  ${[...sales].reverse().slice(0,15).map(s=>`<div class="sale-card"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div><div style="font-weight:700;font-size:14px">${s.customer||'Customer'}</div><div style="font-size:11px;color:#9ca3af">${fmtD(s.date)} · #${String(s.id||'').slice(-4)}</div></div><div style="font-weight:800;color:#16a34a">${rp(s.total)}</div></div><div style="font-size:12px;color:#6b7280;margin-bottom:7px">${s.items.map(i=>`${i.name} ×${i.qty}`).join(' · ')}</div><div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn btn-sm" onclick="reprintSale('${s._key||s.id}')">${t('reprint')}</button>${s.phone?`<button class="btn-wa" style="padding:6px 11px;font-size:12px;border-radius:8px" onclick="reWA('${s._key||s.id}')">${t('resend')}</button>`:''}</div></div>`).join('')}
+  </div>`:''}`;
+}
+
+// ── CROPS ──
+function rCrops(){
+  const crops=getCrops();
+  return`
+  <div class="row-btw"><div class="ph" style="margin:0"><h1>${t('cropMgmt')}</h1><p>${crops.length} ${lang==='mr'?'पिके':'crops'}</p></div><button class="btn btn-sm" onclick="openModal('crop')">${t('addCrop')}</button></div>
+  <div class="twrap"><table><thead><tr><th>${lang==='mr'?'पीक':'Crop'}</th><th>${lang==='mr'?'शेत':'Field'}</th><th>${lang==='mr'?'क्षेत्र':'Area'}</th><th>${lang==='mr'?'पेरणी':'Sow Date'}</th><th>${lang==='mr'?'स्थिती':'Status'}</th><th></th></tr></thead><tbody>
+  ${crops.map((c,i)=>`<tr><td style="font-weight:700">🌾 ${c.name}</td><td style="color:#6b7280">${c.field}</td><td style="color:#6b7280">${c.area} ${lang==='mr'?'एकर':'ac'}</td><td style="color:#6b7280">${c.sowDate}</td><td>${bdg(c.status,SC)}</td><td><button class="btn-red" onclick="delCrop(${i})">${t('remove')}</button></td></tr>`).join('')}
+  </tbody></table></div>`;
+}
+
+// ── SCHEDULE ──
+function rSched(){
+  const sched=getSched();
+  const sorted=[...sched].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  return`
+  <div class="row-btw"><div class="ph" style="margin:0"><h1>${t('spraySched')}</h1><p>${sched.filter(s=>s.status==='Upcoming').length} ${lang==='mr'?'येणारे':'upcoming'}</p></div><button class="btn btn-sm" onclick="openModal('schedule')">${t('addSched')}</button></div>
+  ${sorted.map((s,i)=>{const d=new Date(s.date),done=s.status==='Done';return`
+  <div class="si" style="opacity:${done?.5:1}">
+    <div class="sd" style="background:${done?'#f3f4f6':'#f0fdf4'}"><div class="sd-day" style="color:${done?'#9ca3af':'#16a34a'}">${d.getDate()}</div><div class="sd-mon" style="color:#9ca3af">${d.toLocaleString('default',{month:'short'})}</div></div>
+    <div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.crop} — ${s.pesticide}</div><div style="font-size:11px;color:#9ca3af;margin-top:2px">${s.notes}</div></div>
+    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+      ${bdg(s.status,{Upcoming:{bg:'#f0fdf4',c:'#16a34a',b:'#bbf7d0'},Done:{bg:'#f3f4f6',c:'#9ca3af',b:'#e5e7eb'}})}
+      ${!done?`<button class="btn-done" onclick="markDone(${i})">${t('markDone')}</button>`:''}
+      <button class="btn-x" onclick="delSched(${i})">✕</button>
+    </div>
+  </div>`}).join('')}`;
+}
+
+// ════════════════════════════════════════
+// MODAL
+// ════════════════════════════════════════
+function openModal(type){
+  mtype=type;fd={};
+  document.getElementById('overlay').style.display='flex';
+  document.getElementById('mfooter').innerHTML=`<button class="btn" style="flex:1" onclick="doAdd()">${t('save')}</button><button onclick="closeModal()" style="flex:1;background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb;border-radius:10px;padding:11px;cursor:pointer;font-family:inherit;font-size:13px">${t('cancel')}</button>`;
+
+  if(type==='pesticide'){
+    fd={type:'Insecticide',unit:'L',toxicity:'Medium'};
+    document.getElementById('mtitle').textContent=t('addPesticide');
+    document.getElementById('mbody').innerHTML=`
+      <div class="fg"><label class="fl">${t('productName')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. क्लोरपायरीफॉस':'e.g. Chlorpyrifos'}" oninput="fd.name=this.value"></div>
+      <div class="fg"><label class="fl">${t('typeLabel')}</label>
+        ${optPicker('type',['Insecticide','Fungicide','Herbicide','Other'],'Insecticide',{Insecticide:'🐛',Fungicide:'🍄',Herbicide:'🌿',Other:'📦'})}
+      </div>
+      <div class="fg"><label class="fl">${t('targetPests')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. मावा, भुंगे':'e.g. Aphids, Beetles'}" oninput="fd.target=this.value"></div>
+      <div class="fg"><label class="fl">${t('stockQty')}</label><input class="fi" type="number" placeholder="e.g. 50" oninput="fd.stock=this.value"></div>
+      <div class="fg"><label class="fl">${t('unitLabel')}</label>
+        ${optPicker('unit',['L','kg','ml','g'],'L',{L:'💧',kg:'⚖️',ml:'🧪',g:'🔬'})}
+      </div>
+      <div class="fg"><label class="fl">${t('priceLabel')}</label><input class="fi" type="number" placeholder="e.g. 350" oninput="fd.price=this.value"></div>
+      <div class="fg"><label class="fl">${t('toxLabel')}</label>
+        ${optPicker('toxicity',['High','Medium','Low','Unknown'],'Medium',{High:'🔴',Medium:'🟡',Low:'🟢',Unknown:'⚪'})}
+      </div>
+      <div class="fg"><label class="fl">${t('expiry')}</label><input class="fi" type="date" oninput="fd.expiry=this.value"></div>`;
+  }
+  else if(type==='crop'){
+    fd={status:'Growing'};
+    document.getElementById('mtitle').textContent=t('addCropTitle');
+    document.getElementById('mbody').innerHTML=`
+      <div class="fg"><label class="fl">${t('cropName')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. गहू':'e.g. Wheat'}" oninput="fd.name=this.value"></div>
+      <div class="fg"><label class="fl">${t('fieldName')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. शेत अ':'e.g. Field A'}" oninput="fd.field=this.value"></div>
+      <div class="fg"><label class="fl">${t('area')}</label><input class="fi" type="number" placeholder="e.g. 10" oninput="fd.area=this.value"></div>
+      <div class="fg"><label class="fl">${t('sowDate')}</label><input class="fi" type="date" oninput="fd.sowDate=this.value"></div>
+      <div class="fg"><label class="fl">${t('statusLabel')}</label>
+        ${optPicker('status',['Growing','Planted','Harvested','Failed'],'Growing',{Growing:'🌱',Planted:'🌾',Harvested:'✅',Failed:'❌'})}
+      </div>`;
+  }
+  else if(type==='schedule'){
+    document.getElementById('mtitle').textContent=t('schedTitle');
+    document.getElementById('mbody').innerHTML=`
+      <div class="fg"><label class="fl">${t('cropField')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. गहू':'e.g. Wheat'}" oninput="fd.crop=this.value"></div>
+      <div class="fg"><label class="fl">${t('pesticideField')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. क्लोरपायरीफॉस':'e.g. Chlorpyrifos'}" oninput="fd.pesticide=this.value"></div>
+      <div class="fg"><label class="fl">${t('dateField')}</label><input class="fi" type="date" oninput="fd.date=this.value"></div>
+      <div class="fg"><label class="fl">${t('notesField')}</label><input class="fi" placeholder="${lang==='mr'?'उदा. संध्याकाळी फवारणी':'e.g. Evening spray'}" oninput="fd.notes=this.value"></div>`;
+  }
+  else if(type==='addItem'){
+    const pest=getPest();
+    document.getElementById('mtitle').textContent=t('addItemTitle');
+    const opts=pest.map((p,i)=>`<option value="${i}">${p.name} (${p.stock} ${p.unit}) — ${rp(p.price)}</option>`).join('');
+    document.getElementById('mbody').innerHTML=`
+      <div class="fg"><label class="fl">${lang==='mr'?'उत्पादन निवडा *':'Select Product *'}</label><select class="fi" onchange="pickProd(this.value)"><option value="">${t('selectProduct')}</option>${opts}</select></div>
+      <div id="pid"></div>`;
+  }
+}
+
+function pickProd(idx){
+  if(idx==='')return;
+  const p=getPest()[parseInt(idx)];
+  fd.pestIdx=parseInt(idx);fd.name=p.name;fd.price=p.price;fd.unit=p.unit;fd.maxStock=p.stock;
+  document.getElementById('pid').innerHTML=`
+    <div class="fg"><label class="fl">${lang==='mr'?'प्रमाण':'Quantity'} * (${t('available')}: ${p.stock} ${p.unit})</label><input class="fi" type="number" min="1" max="${p.stock}" placeholder="${lang==='mr'?'प्रमाण टाका':'Enter qty'}" oninput="fd.qty=this.value"></div>
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:10px 13px;font-size:13px;color:#15803d;font-weight:600">${lang==='mr'?'किंमत':'Price'}: ${rp(p.price)} / ${p.unit}</div>`;
+}
+
+function closeModal(){document.getElementById('overlay').style.display='none'}
+function outsideClose(e){if(e.target===document.getElementById('overlay'))closeModal()}
+
+async function doAdd(){
+  if(mtype==='pesticide'){
+    if(!fd.name)return alert(lang==='mr'?'उत्पादनाचे नाव टाका':'Enter product name');
+    await dbAdd('pesticides',{name:fd.name,type:fd.type||'Insecticide',target:fd.target||'',stock:Number(fd.stock)||0,unit:fd.unit||'L',price:Number(fd.price)||0,toxicity:fd.toxicity||'Medium',expiry:fd.expiry||''});
+  }else if(mtype==='crop'){
+    if(!fd.name)return alert(lang==='mr'?'पिकाचे नाव टाका':'Enter crop name');
+    await dbAdd('crops',{name:fd.name,field:fd.field||'',area:Number(fd.area)||0,status:fd.status||'Growing',sowDate:fd.sowDate||''});
+  }else if(mtype==='schedule'){
+    if(!fd.crop||!fd.pesticide||!fd.date)return alert(lang==='mr'?'पीक, कीटकनाशक आणि तारीख भरा':'Fill crop, pesticide and date');
+    await dbAdd('schedule',{crop:fd.crop,pesticide:fd.pesticide,date:fd.date,status:'Upcoming',notes:fd.notes||''});
+    showNotif(`📅 ${fd.crop} — ${fd.pesticide} — ${fd.date}`);
+    pushNotif(fd.crop,fd.pesticide,fd.date);
+  }else if(mtype==='addItem'){
+    if(fd.pestIdx===undefined||!fd.qty)return alert(lang==='mr'?'उत्पादन आणि प्रमाण निवडा':'Select product and enter quantity');
+    const qty=Number(fd.qty);
+    const p=getPest()[fd.pestIdx];
+    if(qty>p.stock)return alert(`${lang==='mr'?'फक्त':'Only'} ${p.stock} ${p.unit} ${lang==='mr'?'शिल्लक':'in stock'}!`);
+    if(qty<=0)return alert(lang==='mr'?'योग्य प्रमाण टाका':'Enter valid quantity');
+    bill.items.push({pestIdx:fd.pestIdx,name:fd.name,qty,price:fd.price,unit:fd.unit});
+  }
+  closeModal();render();
+}
+
+// ════════════════════════════════════════
+// BILLING
+// ════════════════════════════════════════
+function sellDirect(idx){
+  go('Billing');
+  setTimeout(()=>openModal('addItem'),50);
+  setTimeout(()=>{const sel=document.querySelector('select.fi');if(sel){sel.value=idx;pickProd(idx)}},200);
+}
+function rmItem(i){bill.items.splice(i,1);render()}
+
+async function finalize(){
+  if(!bill.items.length)return alert(lang==='mr'?'बिलात वस्तू नाहीत':'No items in bill');
+  const pest=getPest();
+  for(const item of bill.items){
+    const p=pest[item.pestIdx];
+    if(p)await dbUpdate('pesticides',p,{stock:Math.max(0,p.stock-item.qty)});
+  }
+  const total=bill.items.reduce((a,i)=>a+i.qty*i.price,0);
+  await dbAdd('sales',{id:Date.now(),customer:bill.customer||'Customer',phone:bill.phone,date:new Date().toISOString().split('T')[0],items:[...bill.items],total});
+  showNotif(`✅ ${lang==='mr'?'बिल जतन झाले':'Bill saved'}! ${rp(total)}`);
+  bill={customer:'',phone:'',items:[]};render();
+}
+
+function billHTML(s){
+  const total=s.items.reduce((a,i)=>a+i.qty*i.price,0);
+  return`<div style="font-family:'Trebuchet MS',sans-serif;max-width:400px;margin:0 auto;padding:20px;border:2px solid #16a34a;border-radius:12px">
+  <div style="text-align:center;margin-bottom:14px"><div style="font-size:20px">🌿</div><div style="font-size:17px;font-weight:800;color:#14532d">Shri Krushi Seva Kendra</div><div style="font-size:10px;color:#16a34a;letter-spacing:1px">AGRICULTURAL PESTICIDE STORE</div><div style="font-size:11px;color:#9ca3af;margin-top:3px">${t('billTitle')} #${String(s.id||'').slice(-6)} · ${fmtD(s.date)}</div></div>
+  <div style="border-top:1px dashed #ccc;padding-top:10px;margin-bottom:10px;font-size:13px"><b>${t('customer')}:</b> ${s.customer||'—'}<br>${s.phone?`<b>${t('phone')}:</b> ${s.phone}`:''}</div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px"><thead><tr style="background:#f0fdf4"><th style="padding:7px;text-align:left;border:1px solid #e5e7eb">${lang==='mr'?'उत्पादन':'Product'}</th><th style="padding:7px;text-align:center;border:1px solid #e5e7eb">${lang==='mr'?'प्रमाण':'Qty'}</th><th style="padding:7px;text-align:right;border:1px solid #e5e7eb">${lang==='mr'?'दर':'Rate'}</th><th style="padding:7px;text-align:right;border:1px solid #e5e7eb">${lang==='mr'?'रक्कम':'Amt'}</th></tr></thead>
+  <tbody>${s.items.map(i=>`<tr><td style="padding:7px;border:1px solid #e5e7eb">${i.name}</td><td style="padding:7px;text-align:center;border:1px solid #e5e7eb">${i.qty} ${i.unit}</td><td style="padding:7px;text-align:right;border:1px solid #e5e7eb">₹${i.price}</td><td style="padding:7px;text-align:right;border:1px solid #e5e7eb;font-weight:700">₹${i.qty*i.price}</td></tr>`).join('')}</tbody></table>
+  <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:800;padding:9px 0;border-top:2px solid #16a34a;color:#14532d"><span>${t('total').toUpperCase()}</span><span>₹${total.toLocaleString('en-IN')}</span></div>
+  <div style="text-align:center;margin-top:12px;font-size:11px;color:#9ca3af">${t('thankyou')}<br>Shri Krushi Seva Kendra</div></div>`;
+}
+
+function doPrint(){
+  if(!bill.items.length)return alert(lang==='mr'?'बिलात वस्तू नाहीत':'No items');
+  const s={id:Date.now(),customer:bill.customer,phone:bill.phone,date:new Date().toISOString().split('T')[0],items:bill.items,total:bill.items.reduce((a,i)=>a+i.qty*i.price,0)};
+  const pa=document.getElementById('printArea');pa.style.display='block';pa.innerHTML=billHTML(s);window.print();pa.style.display='none';
+}
+function reprintSale(key){
+  const s=getSales().find(x=>(x._key||String(x.id))===String(key));
+  if(!s)return;
+  const pa=document.getElementById('printArea');pa.style.display='block';pa.innerHTML=billHTML(s);window.print();pa.style.display='none';
+}
+
+function waText(s){
+  const total=s.items.reduce((a,i)=>a+i.qty*i.price,0);
+  const mr=lang==='mr';
+  let m=`🌿 *श्री कृषी सेवा केंद्र*\n${mr?'_कृषी कीटकनाशक दुकान_':'_Agricultural Pesticide Store_'}\n────────────────\n📋 ${mr?'बिल':'Bill'} #${String(s.id||'').slice(-6)}\n📅 ${fmtD(s.date)}\n👤 ${s.customer||'—'}\n\n*${mr?'वस्तू':'Items'}:*\n`;
+  s.items.forEach(i=>{m+=`• ${i.name}: ${i.qty} ${i.unit} × ₹${i.price} = *₹${i.qty*i.price}*\n`});
+  m+=`────────────────\n💰 *${mr?'एकूण':'TOTAL'}: ₹${total.toLocaleString('en-IN')}*\n\n${t('thankyou')}`;
+  return encodeURIComponent(m);
+}
+function doWA(){
+  if(!bill.items.length)return alert(lang==='mr'?'बिलात वस्तू नाहीत':'No items');
+  if(!bill.phone)return alert(lang==='mr'?'WhatsApp नंबर टाका':'Enter customer WhatsApp number');
+  const s={id:Date.now(),customer:bill.customer,phone:bill.phone,date:new Date().toISOString().split('T')[0],items:bill.items,total:bill.items.reduce((a,i)=>a+i.qty*i.price,0)};
+  const num=bill.phone.replace(/\D/g,'');
+  window.open(`https://wa.me/${num.length===10?'91'+num:num}?text=${waText(s)}`,'_blank');
+}
+function reWA(key){
+  const s=getSales().find(x=>(x._key||String(x.id))===String(key));
+  if(!s||!s.phone)return;
+  const num=s.phone.replace(/\D/g,'');
+  window.open(`https://wa.me/${num.length===10?'91'+num:num}?text=${waText(s)}`,'_blank');
+}
+
+// ════════════════════════════════════════
+// DELETE / STATUS
+// ════════════════════════════════════════
+function delPest(i){const p=getPest()[i];if(p)dbRemove('pesticides',p)}
+function delCrop(i){const c=getCrops()[i];if(c)dbRemove('crops',c)}
+function delSched(i){const s=getSched()[i];if(s)dbRemove('schedule',s)}
+function markDone(i){const s=getSched()[i];if(s)dbUpdate('schedule',s,{status:'Done'})}
+
+// ════════════════════════════════════════
+// NOTIFICATIONS
+// ════════════════════════════════════════
+function showNotif(msg){
+  document.getElementById('notifText').textContent=msg;
+  const b=document.getElementById('notifBar');b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'),4500);
+}
+function closeNotif(){document.getElementById('notifBar').classList.remove('show')}
+async function pushNotif(crop,pest,date){
+  if(!('Notification'in window))return;
+  let p=Notification.permission;
+  if(p==='default')p=await Notification.requestPermission();
+  if(p==='granted')new Notification('🌿 SKS Kendra',{body:`${crop} — ${pest} — ${date}`,icon:'icon-192.png'});
+}
+
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>

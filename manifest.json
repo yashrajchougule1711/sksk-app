@@ -1,0 +1,42 @@
+{
+  "name": "Shri Krushi Seva Kendra",
+  "short_name": "SKS Kendra",
+  "description": "Agricultural Pesticide Store & Management System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Add Pesticide",
+      "short_name": "Add Pesticide",
+      "description": "Quickly add a new pesticide",
+      "url": "/?tab=Pesticides",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Schedule Spray",
+      "short_name": "Schedule",
+      "description": "Schedule a new spray application",
+      "url": "/?tab=Schedule",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
