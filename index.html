@@ -162,7 +162,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-if(FC.apiKey==="YOUR_API_KEY"){
+if(firebaseConfig.apiKey==="YOUR_API_KEY"){
   window._fbReady=false;
   initLocal();
 }else{
